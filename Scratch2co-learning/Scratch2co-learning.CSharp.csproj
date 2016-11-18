@@ -150,6 +150,7 @@
     <Compile Include="Assets\script\LineX.cs" />
     <Compile Include="Assets\script\LineY.cs" />
     <Compile Include="Assets\script\get_cam_pos.cs" />
+    <Compile Include="Assets\script\scratchobject.cs" />
     <Compile Include="Assets\script\socketio.cs" />
   </ItemGroup>
   <ItemGroup>
