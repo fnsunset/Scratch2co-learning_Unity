@@ -41,8 +41,7 @@ namespace SocketIO
 	public class SocketIOComponent : MonoBehaviour
 	{
 		#region Public Properties
-
-		public string url = "ws://127.0.0.1:4567/socket.io/?EIO=4&transport=websocket";
+		public static string url;
 		public bool autoConnect = true;
 		public int reconnectDelay = 5;
 		public float ackExpirationTime = 1800f;
@@ -91,6 +90,7 @@ namespace SocketIO
 
 		public void Awake()
 		{
+            Debug.Log(start.getIP());
 			encoder = new Encoder();
 			decoder = new Decoder();
 			parser = new Parser();

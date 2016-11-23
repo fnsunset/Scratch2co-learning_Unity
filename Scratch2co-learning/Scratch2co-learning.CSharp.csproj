@@ -147,11 +147,11 @@
     <Compile Include="Assets\SocketIO\WebsocketSharp\WebSocketState.cs" />
     <Compile Include="Assets\SocketIO\WebsocketSharp\WebSocketStream.cs" />
     <Compile Include="Assets\script\AspectCamera.cs" />
-    <Compile Include="Assets\script\LineX.cs" />
-    <Compile Include="Assets\script\LineY.cs" />
+    <Compile Include="Assets\script\Line.cs" />
     <Compile Include="Assets\script\get_cam_pos.cs" />
     <Compile Include="Assets\script\scratchobject.cs" />
     <Compile Include="Assets\script\socketio.cs" />
+    <Compile Include="Assets\script\start.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />

@@ -21,9 +21,11 @@ GameObject:
   - 4: {fileID: 4000011524301934}
   - 212: {fileID: 212000011763360022}
   - 114: {fileID: 114000011790143836}
+  - 58: {fileID: 58000011328029120}
+  - 50: {fileID: 50000011471130366}
   m_Layer: 0
   m_Name: ScratchObject
-  m_TagString: Untagged
+  m_TagString: Scratch_Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,6 +43,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &50000011471130366
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013192249020}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &58000011328029120
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013192249020}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &114000011790143836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -62,6 +95,8 @@ MonoBehaviour:
   obj_d: 0
   obj_disp: 0
   obj_sprite: {fileID: 0}
+  obj_sizex: 0
+  obj_sizey: 0
 --- !u!212 &212000011763360022
 SpriteRenderer:
   m_ObjectHideFlags: 1
