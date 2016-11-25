@@ -7,7 +7,7 @@ public class socketio : MonoBehaviour {
     string id = "";
     public bool flame = true;
     public int maxmember = 4;
-    public int Group = start.getGROUP();
+    public int Group = 0;
     public int disp_x;
     public int disp_y;
     public float scsize_x;
@@ -29,6 +29,8 @@ public class socketio : MonoBehaviour {
     GameObject line_clone;
     // Use this for initialization
     void Start () {
+        Group = start.GROUP;
+        Debug.Log("your Group is "+ Group);
         GameObject go = GameObject.Find("SocketIO");
         socket = go.GetComponent<SocketIOComponent>();
         socket.On("server/hello", hello);
@@ -235,24 +237,42 @@ public class socketio : MonoBehaviour {
         {
             int socket_num = (int)obj.GetField("Number").n;
             int socket_obj = (int)obj.GetField("Obj").n;
-            switch (socket_num)
+            int socket_warpx = (int)obj.GetField("warpx").n;
+            int socket_warpy = (int)obj.GetField("warpy").n;
+            int socket_center = (int)obj.GetField("center").n;
+            if (socket_center == 1)
             {
-                case 0:
-                    obj_x[socket_num, socket_obj] = disp_x / -2f;
-                    obj_y[socket_num, socket_obj] = disp_y / 2f;
-                    break;
-                case 1:
-                    obj_x[socket_num, socket_obj] = disp_x / 2f;
-                    obj_y[socket_num, socket_obj] = disp_y / 2f;
-                    break;
-                case 2:
-                    obj_x[socket_num, socket_obj] = disp_x / -2f;
-                    obj_y[socket_num, socket_obj] = disp_y / -2f;
-                    break;
-                case 3:
-                    obj_x[socket_num, socket_obj] = disp_x / 2f;
-                    obj_y[socket_num, socket_obj] = disp_y / -2f;
-                    break;
+                if (flame)
+                {
+                    switch (socket_num)
+                    {
+                        case 0:
+                            obj_x[socket_num, socket_obj] = disp_x / -2f;
+                            obj_y[socket_num, socket_obj] = disp_y / 2f;
+                            break;
+                        case 1:
+                            obj_x[socket_num, socket_obj] = disp_x / 2f;
+                            obj_y[socket_num, socket_obj] = disp_y / 2f;
+                            break;
+                        case 2:
+                            obj_x[socket_num, socket_obj] = disp_x / -2f;
+                            obj_y[socket_num, socket_obj] = disp_y / -2f;
+                            break;
+                        case 3:
+                            obj_x[socket_num, socket_obj] = disp_x / 2f;
+                            obj_y[socket_num, socket_obj] = disp_y / -2f;
+                            break;
+                    }
+                }
+                else
+                {
+                    obj_x[socket_num, socket_obj] = 0f;
+                    obj_y[socket_num, socket_obj] = 0f;
+                }
+            }else
+            {
+                obj_x[socket_num, socket_obj] = socket_warpx;
+                obj_y[socket_num, socket_obj] = socket_warpy;
             }
             if (obj_disp[socket_num, socket_obj] == -1)
             {

@@ -148,6 +148,7 @@
     <Compile Include="Assets\SocketIO\WebsocketSharp\WebSocketStream.cs" />
     <Compile Include="Assets\script\AspectCamera.cs" />
     <Compile Include="Assets\script\Line.cs" />
+    <Compile Include="Assets\script\background.cs" />
     <Compile Include="Assets\script\get_cam_pos.cs" />
     <Compile Include="Assets\script\scratchobject.cs" />
     <Compile Include="Assets\script\socketio.cs" />

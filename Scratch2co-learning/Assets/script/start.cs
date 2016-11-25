@@ -21,25 +21,25 @@ public class start : MonoBehaviour {
     public void buttonA()
     {
         SocketIO.SocketIOComponent.url = getIP();
-        GROUP = 0;
+        GROUP = 1;
         SceneManager.LoadScene("main");
     }
     public void buttonB()
     {
         SocketIO.SocketIOComponent.url = getIP();
-        GROUP = 1;
+        GROUP = 2;
         SceneManager.LoadScene("main");
     }
     public void buttonC()
     {
         SocketIO.SocketIOComponent.url = getIP();
-        GROUP = 2;
+        GROUP = 3;
         SceneManager.LoadScene("main");
     }
     public void buttonD()
     {
         SocketIO.SocketIOComponent.url = getIP();
-        GROUP = 3;
+        GROUP = 4;
         SceneManager.LoadScene("main");
     }
     public static string getIP()
