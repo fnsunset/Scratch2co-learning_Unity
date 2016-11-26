@@ -68,14 +68,14 @@ public class scratchobject : MonoBehaviour {
         thisrender.color = color;
         obj_sizex = thisrender.bounds.size.x * sp_con.disp_x / sp_con.scsize_x / 2;
         obj_sizey = thisrender.bounds.size.y * sp_con.disp_y / sp_con.scsize_y / 2;
-        obj_edge[0, 0] = obj_x - obj_sizex * Mathf.Cos(obj_r * Mathf.Deg2Rad);          //オブジェクトの左上x座標 - scratch系
-        obj_edge[0, 1] = obj_y + obj_sizey * Mathf.Sin(obj_r * Mathf.Deg2Rad);          //オブジェクトの左上y座標 - scratch系
-        obj_edge[1, 0] = obj_x + obj_sizex * Mathf.Cos((90f - obj_r) * Mathf.Deg2Rad);  //オブジェクトの右上x座標 - scratch系
-        obj_edge[1, 1] = obj_y + obj_sizey * Mathf.Sin((90f - obj_r) * Mathf.Deg2Rad);  //オブジェクトの右上y座標 - scratch系
-        obj_edge[2, 0] = obj_x - obj_sizex * Mathf.Cos((90f - obj_r) * Mathf.Deg2Rad);  //オブジェクトの左下x座標 - scratch系
-        obj_edge[2, 1] = obj_y - obj_sizey * Mathf.Sin((90f - obj_r) * Mathf.Deg2Rad);  //オブジェクトの左下y座標 - scratch系
-        obj_edge[3, 0] = obj_x + obj_sizex * Mathf.Cos(obj_r * Mathf.Deg2Rad);          //オブジェクトの右下x座標 - scratch系
-        obj_edge[3, 1] = obj_y - obj_sizey * Mathf.Sin(obj_r * Mathf.Deg2Rad);          //オブジェクトの右下y座標 - scratch系
+        obj_edge[0, 0] = sp_con.obj_x[obj_mem, obj_id] - obj_sizex * Mathf.Cos(obj_r * Mathf.Deg2Rad);          //オブジェクトの左上x座標 - scratch系
+        obj_edge[0, 1] = sp_con.obj_y[obj_mem, obj_id] + obj_sizey * Mathf.Sin(obj_r * Mathf.Deg2Rad);          //オブジェクトの左上y座標 - scratch系
+        obj_edge[1, 0] = sp_con.obj_x[obj_mem, obj_id] + obj_sizex * Mathf.Cos((90f - obj_r) * Mathf.Deg2Rad);  //オブジェクトの右上x座標 - scratch系
+        obj_edge[1, 1] = sp_con.obj_y[obj_mem, obj_id] + obj_sizey * Mathf.Sin((90f - obj_r) * Mathf.Deg2Rad);  //オブジェクトの右上y座標 - scratch系
+        obj_edge[2, 0] = sp_con.obj_x[obj_mem, obj_id] - obj_sizex * Mathf.Cos((90f - obj_r) * Mathf.Deg2Rad);  //オブジェクトの左下x座標 - scratch系
+        obj_edge[2, 1] = sp_con.obj_y[obj_mem, obj_id] - obj_sizey * Mathf.Sin((90f - obj_r) * Mathf.Deg2Rad);  //オブジェクトの左下y座標 - scratch系
+        obj_edge[3, 0] = sp_con.obj_x[obj_mem, obj_id] + obj_sizex * Mathf.Cos(obj_r * Mathf.Deg2Rad);          //オブジェクトの右下x座標 - scratch系
+        obj_edge[3, 1] = sp_con.obj_y[obj_mem, obj_id] - obj_sizey * Mathf.Sin(obj_r * Mathf.Deg2Rad);          //オブジェクトの右下y座標 - scratch系
 
         if (Mathf.Min(obj_edge[0, 0], obj_edge[1, 0], obj_edge[2, 0], obj_edge[3, 0]) < screen[0])
         {
@@ -106,7 +106,9 @@ public class scratchobject : MonoBehaviour {
             col_object = collision.gameObject.GetComponent<scratchobject>();
             if (col_object.obj_disp == 1 && obj_disp == 1)
             {
-                if (col_object.obj_mem <= obj_mem && col_object.obj_id < obj_id)
+                Debug.Log("接触！！！");
+                Debug.Log(obj_mem + "の" + obj_id + "が" + col_object.obj_mem + "の" + col_object.obj_id + "と接触しています");
+                if (col_object.obj_mem < obj_mem ||(col_object.obj_mem == obj_mem && col_object.obj_id < obj_id))
                 {
                     sp_con.collision_on(obj_mem, obj_id, col_object.obj_mem, col_object.obj_id);
                     Debug.Log(obj_mem+"の"+ obj_id+"が"+ col_object.obj_mem+"の"+ col_object.obj_id+"と接触しています");
@@ -122,7 +124,7 @@ public class scratchobject : MonoBehaviour {
             col_object = collision.gameObject.GetComponent<scratchobject>();
             if (col_object.obj_disp == 1 && obj_disp == 1)
             {
-                if (col_object.obj_mem <= obj_mem && col_object.obj_id < obj_id)
+                if (col_object.obj_mem < obj_mem || (col_object.obj_mem == obj_mem && col_object.obj_id < obj_id))
                 {
                     sp_con.collision_off(obj_mem, obj_id, col_object.obj_mem, col_object.obj_id);
                 }

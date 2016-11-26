@@ -153,6 +153,7 @@
     <Compile Include="Assets\script\scratchobject.cs" />
     <Compile Include="Assets\script\socketio.cs" />
     <Compile Include="Assets\script\start.cs" />
+    <Compile Include="Assets\script\test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />
