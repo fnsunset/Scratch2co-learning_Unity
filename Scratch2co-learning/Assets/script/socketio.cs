@@ -166,6 +166,11 @@ public class socketio : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKey("escape"))
+        {
+            Debug.Log("おわり");
+            Application.Quit();
+        }
         emit_dataset dataclass;
         if(count++ > 2)
         {
@@ -522,7 +527,7 @@ public class socketio : MonoBehaviour {
         jsonObject.AddField("obj2", obj2);
         socket.Emit("unity/collision_off", jsonObject);
     }
-    void send_pos(int mem, int obj, float objx, float objy)
+    public void send_pos(int mem, int obj, float objx, float objy)
     {
         JSONObject jsonObject = new JSONObject(JSONObject.Type.OBJECT);
         jsonObject.AddField("id", id);

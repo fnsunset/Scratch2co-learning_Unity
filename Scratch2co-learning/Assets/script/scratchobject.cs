@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class scratchobject : MonoBehaviour {
-    
     public GameObject sp_control;
     public int obj_mem;
     public int obj_id;
@@ -23,6 +22,8 @@ public class scratchobject : MonoBehaviour {
     CircleCollider2D thiscollision;
     socketio sp_con;
     bool ch_sprite= false;
+    int count = 0;
+    int wait = 0;
     // Use this for initialization
     void Start () {
         thisrender = gameObject.GetComponent<SpriteRenderer>();
@@ -33,11 +34,13 @@ public class scratchobject : MonoBehaviour {
         obj_sizex = thisrender.bounds.size.x;
         obj_sizey = thisrender.bounds.size.y;
         setscreen(true);
+        wait = Random.Range(20, 50);
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    if(ch_sprite == false && obj_sprite)
+        
+        if (ch_sprite == false && obj_sprite)
         {
             thisrender.sprite = obj_sprite;
             this.transform.localScale = new Vector3(obj_z, obj_z, 1);
@@ -97,6 +100,16 @@ public class scratchobject : MonoBehaviour {
             sp_con.obj_d[obj_mem, obj_id] = 360f - obj_d;
             sp_con.obj_y[obj_mem, obj_id] += screen[1] - Mathf.Max(obj_edge[0, 1], obj_edge[1, 1], obj_edge[2, 1], obj_edge[3, 1]);
         }
+        count++;
+        if(count > wait)
+        {
+            count = 0;
+            wait = Random.Range(20, 50);
+            if (obj_disp > 0)
+            {
+                sp_con.send_pos(obj_mem, obj_id, obj_x, obj_y);
+            }
+        }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -122,7 +135,7 @@ public class scratchobject : MonoBehaviour {
         {
             scratchobject col_object;
             col_object = collision.gameObject.GetComponent<scratchobject>();
-            if (col_object.obj_disp == 1 && obj_disp == 1)
+            if (col_object.obj_disp == 1 || obj_disp == 1)
             {
                 if (col_object.obj_mem < obj_mem || (col_object.obj_mem == obj_mem && col_object.obj_id < obj_id))
                 {

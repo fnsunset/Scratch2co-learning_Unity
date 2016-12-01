@@ -12,8 +12,12 @@ public class start : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        if (Input.GetKey("escape"))
+        {
+            Debug.Log("おわり");
+            Application.Quit();
+        }
+    }
     public void gettext(string text)
     {
         IP =  text;
